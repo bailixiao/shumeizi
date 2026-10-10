@@ -20,6 +20,7 @@
   const parse = (s) => new Date(Number(s.slice(0, 4)), Number(s.slice(5, 7)) - 1, Number(s.slice(8, 10)));
   const md = (s) => { const d = parse(s); return { m: d.getMonth() + 1, d: d.getDate(), w: WEEK[d.getDay()] }; };
   const calUrl = (p) => CFG.CAL + (p || '');
+  const fileUrl = (id) => CFG.API + (CFG.API.indexOf('?') === -1 ? '?' : '&') + 'action=file&id=' + encodeURIComponent(id);
 
   document.querySelectorAll('[data-cal]').forEach((a) => { a.href = calUrl(a.dataset.calPath); });
 
@@ -93,13 +94,16 @@
       box.innerHTML = open.map((g) => {
         const dl = g.deadline ? md(g.deadline.slice(0, 10)) : null;
         const photos = g.items.filter((it) => it.photo).slice(0, 3);
-        return `<a class="shop-card" href="${esc(calUrl('#/shop'))}">
-          <span class="shop-tag">🛒 團購開放中</span>
+        // 賣貨便的團購：直接連到賣場（開新分頁）；行事曆下單：連到行事曆的團購頁
+        const href = g.link || calUrl('#/shop/' + encodeURIComponent(g.id));
+        return `<a class="shop-card" href="${esc(href)}"${g.link ? ' target="_blank" rel="noopener"' : ''}>
+          <span class="shop-tag">🛒 團購開放中${g.link ? '・賣貨便' : ''}</span>
           <strong class="shop-name">${esc(g.name)}</strong>
-          ${photos.length ? `<span class="shop-photos">${photos.map((it) => `<img src="${esc(CFG.API + '?action=file&id=' + encodeURIComponent(it.photo))}" alt="${esc(it.name)}" loading="lazy">`).join('')}</span>` : ''}
-          <span class="shop-items">${esc(g.items.map((it) => it.name).join('、'))}</span>
+          ${g.cover ? `<img class="shop-cover" src="${esc(fileUrl(g.cover))}" alt="${esc(g.name)}" loading="lazy">`
+            : photos.length ? `<span class="shop-photos">${photos.map((it) => `<img src="${esc(fileUrl(it.photo))}" alt="${esc(it.name)}" loading="lazy">`).join('')}</span>` : ''}
+          ${g.items.length ? `<span class="shop-items">${esc(g.items.map((it) => it.name).join('、'))}</span>` : g.description ? `<span class="shop-items">${esc(g.description)}</span>` : ''}
           ${dl ? `<span class="shop-dl">${dl.m}/${dl.d}（${dl.w}）${esc(g.deadline.slice(11))} 截止</span>` : ''}
-          <span class="btn btn-primary">我要訂 ›</span>
+          <span class="btn btn-primary">${g.link ? '到賣貨便下單 ›' : '我要訂 ›'}</span>
         </a>`;
       }).join('');
     } catch (err) {
