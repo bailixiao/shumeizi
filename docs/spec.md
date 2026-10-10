@@ -36,7 +36,7 @@
 
 - 讀：`GET {API}?action=getEvents&from=今天&to=今天+60天`、`GET {API}?action=getShop`（只讀，不送任何個資）。
 - 類別對照：道務＝靈魂健身房、教育＝槑青韜課館、植素＝植素園工作坊、勤務＝志工。
-- 連結：活動 → `{行事曆}#/duty/{id}?date={日期}`。團購只列賣貨便的（有 link，2026/10/10 決定），直接連到賣貨便賣場（開新分頁），有封面（cover）就顯示封面；行事曆下單的團購不在官網顯示。
+- 連結：活動 → `{行事曆}#/duty/{id}?date={日期}`。團購：賣貨便的（有 link）直接連到賣貨便賣場（開新分頁）；行事曆下單的連到行事曆的團購頁 `{行事曆}#/shop/{團購ID}`；有封面（cover）就顯示封面，沒有就顯示商品照片。
 - 讀不到（沒網路、API 掛了）：顯示「到行事曆看最新活動」按鈕，頁面其他部分照常。
 - 本機（localhost）：API 用行事曆示範版 `http://localhost:5175/api`、行事曆連 `http://localhost:5175/`；正式：`https://shumeizi-api.duty-calendar-worker.workers.dev/`、`https://bailixiao.github.io/shumeizi-calendar/`。
 

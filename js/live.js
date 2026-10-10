@@ -86,7 +86,7 @@
   document.querySelectorAll('[data-shop]').forEach(async (box) => {
     try {
       const data = await get({ action: 'getShop' });
-      const open = (data.groups || []).filter((g) => !g.closed && g.link); // 官網只列賣貨便的團購（2026/10/10）
+      const open = (data.groups || []).filter((g) => !g.closed); // 賣貨便、行事曆下單的團購都列（2026/10/10）
       if (!open.length) {
         box.innerHTML = box.dataset.empty ? `<p class="muted">${esc(box.dataset.empty)}</p>` : '';
         return;
