@@ -145,6 +145,7 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .card.cat-gym { border-top-color: var(--orange); }
 .card.cat-taoke { border-top-color: var(--berry); }
 .card.cat-zhisu { border-top-color: var(--olive); }
+.card.cat-vol { border-top-color: var(--teal); }
 
 /* ---------- 內頁 ---------- */
 .page-hero { padding: 36px 0 20px; }
@@ -160,7 +161,7 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .prose { max-width: 720px; }
 .prose h2 { font-size: 1.3rem; color: var(--navy); margin-top: 1.4em; }
 .prose > h2:first-child { margin-top: 0; }
-.prose ul { padding-left: 1.2em; }
+.prose ul, .prose ol { padding-left: 1.2em; }
 .prose ul.points, .prose ul.chips { padding-left: 0; }
 .prose li { margin-bottom: .3em; }
 .info { display: grid; gap: 6px; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 16px; }

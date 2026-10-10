@@ -15,7 +15,8 @@ const NAV = [
   ['gym', '靈魂健身房'],
   ['taoke', '槑青韜課館'],
   ['zhisu', '植素園工作坊'],
-  ['stories', '回憶與回饋']
+  ['stories', '回憶與回饋'],
+  ['volunteer', '志工']
 ];
 
 const pagesDir = path.join(root, 'src', 'pages');
