@@ -52,6 +52,6 @@
 - [x] 上線（使用者決定，2026/10/10）
 - [ ] 原始照片、標誌原檔
 - [x] 有人臉的照片：沿用舊官網已公開的（使用者決定，2026/10/10）
-- [ ] 建 GitHub 儲存庫、開 Pages
-- [ ] 行事曆「逛逛官網」按鈕改新網址（行事曆 js/site.js 的 homepage）
+- [x] 建 GitHub 儲存庫、開 Pages：https://github.com/bailixiao/shumeizi → https://bailixiao.github.io/shumeizi/
+- [x] 行事曆「逛逛官網」按鈕改新網址（行事曆 js/site.js 的 homepage）
 - [ ] 請舊官網管理者加「我們搬家了」連結
