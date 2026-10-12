@@ -126,7 +126,8 @@ p { margin: 0 0 1em; }
 .cat-taoke { border-left-color: var(--berry); }
 .cat-zhisu { border-left-color: var(--olive); }
 .cat-vol { border-left-color: var(--teal); }
-.more-link { font-weight: 700; }
+.more-link { display: flex; align-items: center; justify-content: center; width: fit-content; min-height: 44px; margin: 4px auto 0; padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--accent); font-weight: 700; text-decoration: none; }
+.more-link:hover { box-shadow: var(--shadow); }
 .loading { min-height: 44px; }
 
 /* ---------- 活動介紹卡 ---------- */
