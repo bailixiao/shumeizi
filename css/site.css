@@ -235,7 +235,7 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .shop-photos { display: flex; gap: 8px; }
 .shop-photos img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; }
 .shop-items { color: var(--ink-2); white-space: pre-line; }
-.shop-card .shop-cover { width: 100%; max-height: 320px; object-fit: cover; border-radius: 12px; }
+.shop-card .shop-cover { width: 100%; height: auto; max-height: 70vh; object-fit: contain; border-radius: 12px; } /* 團購封面整張顯示 */
 .shop-dl { font-size: .95rem; color: var(--berry); font-weight: 700; }
 .shop-card .btn { justify-self: start; }
 
