@@ -63,6 +63,14 @@ html { scroll-padding-top: 96px; } /* 選單的錨點（團購、出攤預告、
 .header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 8px; padding-bottom: 4px; }
 .brand { display: inline-flex; align-items: center; gap: 8px; color: var(--navy); text-decoration: none; font-weight: 900; font-size: 1.15rem; }
 .brand img { width: 44px; height: 44px; object-fit: contain; }
+/* 右上：看行事曆、報名（手機寫「行事曆」）＋選單 */
+.header-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.btn-cal { min-height: 44px; padding: 6px 14px; font-size: .95rem; white-space: nowrap; }
+.btn-cal .cal-short { display: none; }
+@media (max-width: 520px) { .btn-cal .cal-long { display: none; } .btn-cal .cal-short { display: inline; } .btn-cal { padding: 6px 12px; } .nav-toggle { padding: 6px 12px; } .brand-name { font-size: 1rem; } }
+.brand-name { white-space: nowrap; }
+@media (max-width: 400px) { .brand img { width: 34px; height: 34px; } .brand { gap: 6px; } .brand-name { font-size: .95rem; } .header-actions { gap: 6px; } .btn-cal, .nav-toggle { padding: 6px 10px; font-size: .9rem; } }
+
 /* 選單（2026/10/13 下拉式）：手機＝按「選單」往下展開，大項點了展開子項目；電腦＝一排，大項滑過或點了跳出子選單 */
 .nav-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--navy); font: inherit; font-weight: 700; cursor: pointer; }
 .nav-burger, .nav-burger::before, .nav-burger::after { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .2s; }
