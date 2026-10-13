@@ -57,3 +57,5 @@
 - [x] 建 GitHub 儲存庫、開 Pages：https://github.com/bailixiao/shumeizi → https://bailixiao.github.io/shumeizi/
 - [x] 行事曆「逛逛官網」按鈕改新網址（行事曆 js/site.js 的 homepage）
 - [ ] 請舊官網管理者加「我們搬家了」連結
+
+- **正式標誌（2026/10/14）**：img/logo.png（整個標誌，首頁大圖、og:image）、img/logo-head.png（只有人像頭部：標題列、頁尾、favicon），由行事曆專案的 tools/make-icons.js 產生；白底在淺色背景用 mix-blend-mode: multiply 融進去，頁尾做成圓形徽章。
