@@ -57,11 +57,18 @@
   var marks = Array.prototype.slice.call(document.querySelectorAll('[data-brand-label]'));
   if (label && marks.length) {
     var first = label.textContent;
-    var spy = function () {
+    var forced = '', forcedAt = 0; // 點選單跳過去：先照點的那一項（電腦版那區本來就在畫面上，不會捲）
+    var fromHash = function () {
+      var t = location.hash && document.getElementById(location.hash.slice(1));
+      forced = t && t.getAttribute('data-brand-label') || ''; forcedAt = Date.now();
+    };
+    var spy = function (ev) {
+      if (forced && ev && ev.type === 'scroll' && Date.now() - forcedAt > 600) forced = '';
       var line = document.querySelector('.site-header').getBoundingClientRect().bottom + 80;
       var text = first;
       marks.forEach(function (m) { if (m.getBoundingClientRect().top <= line) text = m.getAttribute('data-brand-label'); });
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4 && window.scrollY > 0) text = marks[marks.length - 1].getAttribute('data-brand-label'); // 捲到底：最後一區
+      if (forced) text = forced;
       if (label.textContent !== text) label.textContent = text;
       // 選單裡同名的那一項也跟著標成目前位置
       Array.prototype.slice.call(nav.querySelectorAll('.nav-sub a')).forEach(function (l) {
@@ -71,7 +78,9 @@
     };
     window.addEventListener('scroll', spy, { passive: true });
     window.addEventListener('resize', spy);
-    window.addEventListener('hashchange', function () { setTimeout(spy, 50); });
+    window.addEventListener('hashchange', function () { fromHash(); spy(); });
+    nav.addEventListener('click', function (ev) { var a = ev.target.closest && ev.target.closest('a'); if (a && a.getAttribute('href') === location.pathname.split('/').pop() + location.hash) { fromHash(); spy(); } }); // 同一項再點一次
+    if (location.hash) fromHash();
     spy();
   }
   // 手機點了同一頁的錨點（例：團購）就收起選單
