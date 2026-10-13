@@ -54,7 +54,8 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) 
     .replace('{{nav}}', nav)
     // 左上角的標誌：植素園的頁面用植素園的標誌（2026/10/14）
     .replace('{{brandLogo}}', key === 'zhisu' ? 'img/zhisu-head.png?v=20261014' : 'img/logo-head.png?v=20261014')
-    .replace('{{pageLabel}}', esc(PAGE_LABEL[key] || meta.title || '')) // 標題旁的小字：現在在哪一頁
+    .replace('{{brandName}}', key === 'zhisu' ? '植素園' : '書槑子青年坊') // 植素園的頁面：左上角寫「植素園」
+    .replace('{{pageLabel}}', esc(key === 'zhisu' ? '書槑子青年坊' : (PAGE_LABEL[key] || meta.title || ''))) // 標題旁的小字：現在在哪一頁（植素園頁改標示屬於書槑子青年坊）
     .replace('{{content}}', src.trim());
   fs.writeFileSync(path.join(root, key + '.html'), html);
   console.log('✓ ' + key + '.html');
