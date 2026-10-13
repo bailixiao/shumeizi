@@ -95,7 +95,7 @@ html { scroll-padding-top: 96px; } /* 選單的錨點（團購、出攤預告、
 @media (max-width: 899px) {
   /* 手機：整片往下展開（沒有 JavaScript 時直接顯示） */
   .js .site-nav { display: none; }
-  .js .site-nav.is-open { display: block; max-height: calc(100vh - 64px); overflow-y: auto; border-top: 1px solid var(--line); }
+  .js .site-nav.is-open { display: block; max-height: calc(100vh - 64px); max-height: var(--nav-max, calc(100dvh - 64px)); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--line); }
   .nav-row { display: flex; flex-direction: column; padding-bottom: 8px; }
   .nav-item { border-bottom: 1px solid var(--line); }
   .site-nav .nav-row > .nav-item > a, .nav-group > summary { min-height: 52px; padding: 0 6px; font-size: 1.05rem; }
@@ -112,6 +112,7 @@ html { scroll-padding-top: 96px; } /* 選單的錨點（團購、出攤預告、
   .site-nav .nav-row > .nav-item > a[aria-current="page"] { background: var(--navy); color: #fff; }
   .nav-group.is-here > summary { box-shadow: inset 0 -3px 0 var(--navy); }
   .nav-group > summary::after { content: '▾'; transform: none !important; }
+  .nav-sub::before { content: ''; position: absolute; left: 0; right: 0; top: -12px; height: 12px; } /* 大項和選單中間的空隙也算在裡面，滑鼠往下移不會收起 */
   .nav-sub { position: absolute; top: calc(100% + 4px); left: 0; min-width: 200px; padding: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 24px rgba(16, 50, 63, .14); z-index: 20; }
   .nav-sub a { padding: 10px 12px; border-radius: 10px; font-weight: 500; white-space: nowrap; }
   .nav-sub a:hover { background: var(--paper-2); }
