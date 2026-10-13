@@ -52,6 +52,8 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) 
     .replace(/{{description}}/g, meta.description || '書槑子青年坊：一群青年自發創立的平台，讀書會×活動×課程×志工。')
     .replace(/{{page}}/g, key)
     .replace('{{nav}}', nav)
+    // 左上角的標誌：植素園的頁面用植素園的標誌（2026/10/14）
+    .replace('{{brandLogo}}', key === 'zhisu' ? 'img/zhisu-head.png?v=20261014' : 'img/logo-head.png?v=20261014')
     .replace('{{pageLabel}}', esc(PAGE_LABEL[key] || meta.title || '')) // 標題旁的小字：現在在哪一頁
     .replace('{{content}}', src.trim());
   fs.writeFileSync(path.join(root, key + '.html'), html);

@@ -60,3 +60,4 @@
 
 - **正式標誌（2026/10/14）**：img/logo.png（整個標誌，首頁大圖、og:image）、img/logo-head.png（只有人像頭部：標題列、頁尾、favicon），由行事曆專案的 tools/make-icons.js 產生；白底在淺色背景用 mix-blend-mode: multiply 融進去，頁尾做成圓形徽章。
 - **標題旁顯示現在在哪一頁（2026/10/14）**：「書槑子青年坊」旁邊一行小字（關於我們、靈魂健身房⋯），手機排到名字下面。
+- **植素園的頁面用植素園標誌（2026/10/14）**：zhisu.html 左上角的標誌換成植素園（img/zhisu-head.png），頁面裡的植素園大圖換成清楚的新版（img/zhisu-logo.png），都由行事曆專案的 植素園.png 裁出來。
