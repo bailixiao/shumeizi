@@ -17,7 +17,7 @@ const NAV = [
   'index',
   { label: '關於我們', items: ['about', 'stories'] },
   { label: '槑子活動', items: ['gym', 'taoke', 'volunteer'] },
-  { label: '植素園工作坊', items: ['zhisu', { label: '團購', href: 'zhisu.html#shop' }, { label: '出攤預告', href: 'zhisu.html#stalls' }, { label: '🌿 HAPPY 購團購社群', href: HAPPY, out: true }] },
+  { label: '植素園工作坊', items: ['zhisu', { label: '本月團購', href: 'zhisu.html#shop' }, { label: '出攤預告', href: 'zhisu.html#stalls' }, { label: '🌿 HAPPY 購團購社群', href: HAPPY, out: true }] },
   { label: '聯絡我們', items: [{ label: '聯絡方式', href: './#contact' }, { label: '💬 官方 LINE', href: LINE, out: true }, { label: '📅 行事曆、報名', href: CAL, cal: true }] }
 ];
 const PAGE_LABEL = { index: '首頁', about: '關於我們', stories: '回憶與回饋', gym: '靈魂健身房', taoke: '槑青韜課館', volunteer: '志工', zhisu: '植素園工作坊' };
