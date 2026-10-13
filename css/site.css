@@ -264,3 +264,7 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 /* 新標誌（2026/10/14）的底是白的：淺色背景上用 multiply 讓白底融進背景；頁尾深色底就做成圓形徽章 */
 .brand img, .hero-logo { mix-blend-mode: multiply; }
 .footer-brand img { border-radius: 50%; background: #fff; }
+/* 標題旁的小字：現在在哪一頁（2026/10/14）；手機排到名字下面 */
+.brand-text { display: inline-flex; align-items: baseline; gap: 10px; }
+.brand-page { font-size: .82rem; font-weight: 700; color: var(--muted); white-space: nowrap; padding-left: 10px; border-left: 2px solid var(--line); }
+@media (max-width: 520px) { .brand-text { flex-direction: column; align-items: flex-start; gap: 0; line-height: 1.2; } .brand-page { font-size: .72rem; padding-left: 0; border-left: 0; } }

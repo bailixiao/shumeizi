@@ -52,6 +52,7 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) 
     .replace(/{{description}}/g, meta.description || '書槑子青年坊：一群青年自發創立的平台，讀書會×活動×課程×志工。')
     .replace(/{{page}}/g, key)
     .replace('{{nav}}', nav)
+    .replace('{{pageLabel}}', esc(PAGE_LABEL[key] || meta.title || '')) // 標題旁的小字：現在在哪一頁
     .replace('{{content}}', src.trim());
   fs.writeFileSync(path.join(root, key + '.html'), html);
   console.log('✓ ' + key + '.html');
