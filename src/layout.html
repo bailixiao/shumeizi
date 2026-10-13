@@ -13,7 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261012a">
+  <link rel="stylesheet" href="css/site.css?v=20261013a">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body data-page="{{page}}">
   <a class="skip" href="#main">跳到內容</a>
@@ -23,9 +24,9 @@
         <img src="img/logo.png" alt="" width="44" height="44">
         <span class="brand-name">書槑子青年坊</span>
       </a>
-      <a class="btn btn-primary btn-cal" data-cal href="https://bailixiao.github.io/shumeizi-calendar/">📅 看行事曆、報名</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span class="nav-burger" aria-hidden="true"></span>選單</button>
     </div>
-    <nav class="site-nav" aria-label="主選單">
+    <nav class="site-nav" id="site-nav" aria-label="主選單">
       <div class="wrap nav-row">
           {{nav}}
       </div>
@@ -52,7 +53,8 @@
     <p class="wrap copyright">© 書槑子青年坊</p>
   </footer>
 
-  <script src="js/config.js?v=20261012a"></script>
-  <script src="js/live.js?v=20261012a"></script>
+  <script src="js/config.js?v=20261013a"></script>
+  <script src="js/live.js?v=20261013a"></script>
+  <script src="js/nav.js?v=20261013a"></script>
 </body>
 </html>
