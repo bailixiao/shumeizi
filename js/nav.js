@@ -52,6 +52,28 @@
     groups.forEach(function (g) { g.open = false; });
     if (nav.classList.contains('is-open')) { setOpen(false); toggle.focus(); }
   });
+  // 左上角小字跟著捲到的區塊換（例：植素園頁 → 關於植素園工作坊／本月團購／出攤預告）
+  var label = document.querySelector('.brand-page');
+  var marks = Array.prototype.slice.call(document.querySelectorAll('[data-brand-label]'));
+  if (label && marks.length) {
+    var first = label.textContent;
+    var spy = function () {
+      var line = document.querySelector('.site-header').getBoundingClientRect().bottom + 80;
+      var text = first;
+      marks.forEach(function (m) { if (m.getBoundingClientRect().top <= line) text = m.getAttribute('data-brand-label'); });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4 && window.scrollY > 0) text = marks[marks.length - 1].getAttribute('data-brand-label'); // 捲到底：最後一區
+      if (label.textContent !== text) label.textContent = text;
+      // 選單裡同名的那一項也跟著標成目前位置
+      Array.prototype.slice.call(nav.querySelectorAll('.nav-sub a')).forEach(function (l) {
+        var same = l.getAttribute('href').indexOf(location.pathname.split('/').pop() || 'index.html') === 0 && l.textContent === text;
+        if (same) l.setAttribute('aria-current', 'page'); else if (l.getAttribute('aria-current')) l.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', spy, { passive: true });
+    window.addEventListener('resize', spy);
+    window.addEventListener('hashchange', function () { setTimeout(spy, 50); });
+    spy();
+  }
   // 手機點了同一頁的錨點（例：團購）就收起選單
   nav.addEventListener('click', function (ev) {
     if (ev.target.closest && ev.target.closest('a') && !wide.matches) setOpen(false);
