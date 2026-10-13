@@ -270,3 +270,4 @@ a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .brand-text { display: inline-flex; align-items: baseline; gap: 10px; }
 .brand-page { font-size: .82rem; font-weight: 700; color: var(--muted); white-space: nowrap; padding-left: 10px; border-left: 2px solid var(--line); }
 @media (max-width: 520px) { .brand-text { flex-direction: column; align-items: flex-start; gap: 0; line-height: 1.2; } .brand-page { font-size: .72rem; padding-left: 0; border-left: 0; } }
+.brand-page:empty { display: none; }
