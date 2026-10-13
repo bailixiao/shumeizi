@@ -21,12 +21,13 @@ const NAV = [
   { label: '聯絡我們', items: [{ label: '聯絡方式', href: './#contact' }, { label: '💬 官方 LINE', href: LINE, out: true }, { label: '📅 行事曆、報名', href: CAL, cal: true }] }
 ];
 const PAGE_LABEL = { index: '首頁', about: '關於我們', stories: '回憶與回饋', gym: '靈魂健身房', taoke: '槑青韜課館', volunteer: '志工', zhisu: '植素園工作坊' };
+const NAV_LABEL = { zhisu: '關於植素園工作坊' }; // 選單裡和頁面名稱不一樣的字
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
 /** 選單 HTML：大項用 <details>（沒有 JavaScript 也能展開）；目前這頁標 aria-current，所在的大項標 is-here */
 function navHtml(key) {
   const link = (it) => {
-    if (typeof it === 'string') return `<a href="${it === 'index' ? './' : it + '.html'}"${it === key ? ' aria-current="page"' : ''}>${esc(PAGE_LABEL[it])}</a>`;
+    if (typeof it === 'string') return `<a href="${it === 'index' ? './' : it + '.html'}"${it === key ? ' aria-current="page"' : ''}>${esc(NAV_LABEL[it] || PAGE_LABEL[it])}</a>`;
     return `<a href="${esc(it.href)}"${it.out ? ' target="_blank" rel="noopener"' : ''}${it.cal ? ' data-cal' : ''}>${esc(it.label)}</a>`;
   };
   return NAV.map((it) => {
