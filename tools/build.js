@@ -22,10 +22,10 @@ const NAV = [
   'index',
   { label: '關於我們', items: ['about', 'stories'] },
   { label: '槑子活動', items: ['gym', 'taoke', 'volunteer'] },
-  { label: '植素園工作坊', items: ['zhisu', { label: '本月團購', href: 'zhisu.html#shop' }, { label: '出攤預告', href: 'zhisu.html#stalls' }, { label: '🌿 HAPPY 購團購社群', href: HAPPY, out: true }] },
+  { label: '植素園工作坊', items: ['zhisu', 'zhisu-shop', 'zhisu-stalls', { label: '🌿 HAPPY 購團購社群', href: HAPPY, out: true }] },
   { label: '聯絡我們', items: [{ label: '聯絡方式', href: './#contact' }, { label: '💬 官方 LINE', href: LINE, out: true }, { label: '📅 行事曆、報名', href: CAL, cal: true }] }
 ];
-const PAGE_LABEL = { index: '首頁', about: '關於我們', stories: '回憶與回饋', gym: '靈魂健身房', taoke: '槑青韜課館', volunteer: '志工', zhisu: '植素園工作坊' };
+const PAGE_LABEL = { index: '首頁', about: '關於我們', stories: '回憶與回饋', gym: '靈魂健身房', taoke: '槑青韜課館', volunteer: '志工', zhisu: '植素園工作坊', 'zhisu-shop': '本月團購', 'zhisu-stalls': '出攤預告' }; // 植素園 2026/10/14 拆成三頁
 const NAV_LABEL = { zhisu: '關於植素園工作坊' }; // 選單裡和頁面名稱不一樣的字
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
@@ -52,16 +52,16 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.html'))) 
   src = src.replace(/<!--\s*(\w+):\s*([\s\S]*?)\s*-->\s*/g, (m, k, v) => { meta[k] = v; return ''; });
   if (publish && /_old\//.test(src)) problems.push(`${file}：還有引用 _old/ 的照片（沒取得同意前不能上線）`);
   const nav = navHtml(key);
-  const title = key === 'index' ? '書槑子青年坊' : `${meta.title} ｜ 書槑子青年坊`;
+  const title = key === 'index' ? '書槑子青年坊' : `${meta.title} ｜ ${key.startsWith('zhisu-') ? '植素園工作坊' : '書槑子青年坊'}`;
   const html = layout
     .replace(/{{title}}/g, title)
     .replace(/{{description}}/g, meta.description || '書槑子青年坊：一群青年自發創立的平台，讀書會×活動×課程×志工。')
     .replace(/{{page}}/g, key)
     .replace('{{nav}}', nav)
     // 左上角的標誌：植素園的頁面用植素園的標誌（2026/10/14）
-    .replace('{{brandLogo}}', key === 'zhisu' ? 'img/zhisu-head.png?v=20261014' : 'img/logo-head.png?v=20261014')
-    .replace('{{brandName}}', key === 'zhisu' ? '植素園工作坊' : '書槑子青年坊') // 植素園的頁面：左上角寫「植素園工作坊」
-    .replace('{{pageLabel}}', esc(key === 'zhisu' ? '關於植素園工作坊' : (PAGE_LABEL[key] || meta.title || ''))) // 標題旁的小字：現在在哪一頁（植素園頁：捲到哪一區就換成那一區，見 js/nav.js）
+    .replace('{{brandLogo}}', key.startsWith('zhisu') ? 'img/zhisu-head.png?v=20261014' : 'img/logo-head.png?v=20261014')
+    .replace('{{brandName}}', key.startsWith('zhisu') ? '植素園工作坊' : '書槑子青年坊') // 植素園的頁面：左上角寫「植素園工作坊」
+    .replace('{{pageLabel}}', esc(NAV_LABEL[key] || PAGE_LABEL[key] || meta.title || '')) // 標題旁的小字：現在在哪一頁（和選單上的字一樣）
     .replace('{{content}}', src.trim());
   fs.writeFileSync(path.join(root, key + '.html'), html);
   appPages.push([key, appHtml(html, key)]);
