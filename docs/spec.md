@@ -38,7 +38,7 @@
 
 - 讀：`GET {API}?action=getEvents&from=今天&to=今天+60天`、`GET {API}?action=getShop`（只讀，不送任何個資）。
 - 類別對照：道務＝靈魂健身房、教育＝槑青韜課館、植素＝植素園工作坊、勤務＝志工。
-- 連結：活動 → `{行事曆}#/duty/{id}?date={日期}`。團購：賣貨便的（有 link）直接連到賣貨便賣場（開新分頁）；行事曆下單的連到行事曆的團購頁 `{行事曆}#/shop/{團購ID}`；**2026/11/2：開團有勾「也放到團購網頁」的，公開官網改連到團購網頁「植素園happy購」`https://zhisu-shop.pages.dev/#/shop/{團購ID}`（給外面的客人，填名字＋手機下單；App 版 home/ 照舊連行事曆）**；封面：有 ⭐ 首推商品照片就用第一個首推的照片（2026/11/3），再來是上傳的封面（cover），都沒有就顯示商品照片。
+- 連結：活動 → `{行事曆}#/duty/{id}?date={日期}`。團購：賣貨便的（有 link）直接連到賣貨便賣場（開新分頁）；行事曆下單的連到行事曆的團購頁 `{行事曆}#/shop/{團購ID}`；**2026/11/2：開團有勾「也放到團購網頁」的，公開官網改連到團購網頁「植素園happy購」`https://zhisu-shop.pages.dev/#/shop/{團購ID}`（給外面的客人，填名字＋手機下單；App 版 home/ 照舊連行事曆）**；封面：有 🔥 強力推薦商品照片就用第一個強力推薦的照片（2026/11/3），再來是上傳的封面（cover），都沒有就顯示商品照片。
 - 讀不到（沒網路、API 掛了）：顯示「到行事曆看最新活動」按鈕，頁面其他部分照常。
 - 本機（localhost）：API 用行事曆示範版 `http://localhost:5175/api`、行事曆連 `http://localhost:5175/`；正式：`https://shumeizi-api.duty-calendar-worker.workers.dev/`、`https://bailixiao.github.io/shumeizi-calendar/`。
 

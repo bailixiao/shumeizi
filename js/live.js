@@ -94,7 +94,7 @@
       box.innerHTML = open.map((g) => {
         const dl = g.deadline ? md(g.deadline.slice(0, 10)) : null;
         const photos = g.items.filter((it) => it.photo).slice(0, 3);
-        // 封面：第一個 ⭐ 首推商品的照片（2026/11/3），沒有才用上傳的封面
+        // 封面：第一個 🔥 強力推薦商品的照片（2026/11/3），沒有才用上傳的封面
         const star = g.items.find((it) => it.featured && it.photo);
         const cover = star ? star.photo : g.cover;
         // 賣貨便的團購：直接連到賣場（開新分頁）；有放到團購網頁的：公開官網連到植素園happy購（2026/11/2），App 版和沒放的連到行事曆的團購頁
